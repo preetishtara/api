@@ -15,7 +15,7 @@ const cors = require('cors');
 app.use(cors({
   origin: [
     "http://localhost:3000",
-    "https://deft-jelly-27c5b3.netlify.app/"
+    "https://deft-jelly-27c5b3.netlify.app"
   ],
   credentials: true
 }));
