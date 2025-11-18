@@ -12,13 +12,22 @@ const app = express();
 const cors = require('cors');
 
 // Middleware - IMPORTANT: Add these before your routes
+
 app.use(cors({
   origin: [
     "http://localhost:3000",
-    "https://deft-jelly-27c5b3.netlify.app"
+    "https://front-1-p7m9.onrender.com"  
   ],
   credentials: true
 }));
+
+// app.use(cors({
+//   origin: [
+//     "http://localhost:3000",
+//     "https://deft-jelly-27c5b3.netlify.app"
+//   ],
+//   credentials: true
+// }));
 
 
 // const allowedOrigins = [
