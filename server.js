@@ -8,38 +8,40 @@ const PORT = 7777;
 
 const app = express();
 
-// Middleware - IMPORTANT: Add these before your routes
-// app.use(cors({
-//   origin: [
-//     "http://localhost:3000",
-//     "https://deft-jelly-27c5b3.netlify.app/"
-//   ],
-//   credentials: true
-// }));
 
 const cors = require('cors');
 
-const allowedOrigins = [
-  "http://localhost:3000",
-  "https://deft-jelly-27c5b3.netlify.app"
-];
-
+// Middleware - IMPORTANT: Add these before your routes
 app.use(cors({
-  origin: function(origin, callback) {
-    // allow requests with no origin like curl/postman
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.indexOf(origin) === -1) {
-      const msg = "The CORS policy for this site does not allow access from the specified Origin.";
-      return callback(new Error(msg), false);
-    }
-    return callback(null, true);
-  },
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true,
+  origin: [
+    "http://localhost:3000",
+    "https://deft-jelly-27c5b3.netlify.app/"
+  ],
+  credentials: true
 }));
 
-app.options('*', cors());
+
+// const allowedOrigins = [
+//   "http://localhost:3000",
+//   "https://deft-jelly-27c5b3.netlify.app"
+// ];
+
+// app.use(cors({
+//   origin: function(origin, callback) {
+//     // allow requests with no origin like curl/postman
+//     if (!origin) return callback(null, true);
+//     if (allowedOrigins.indexOf(origin) === -1) {
+//       const msg = "The CORS policy for this site does not allow access from the specified Origin.";
+//       return callback(new Error(msg), false);
+//     }
+//     return callback(null, true);
+//   },
+//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+//   allowedHeaders: ['Content-Type', 'Authorization'],
+//   credentials: true,
+// }));
+
+// app.options('*', cors());
 
 app.use(bodyParser.json());
 
