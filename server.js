@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
+// require('dotenv').config();
 const path = require('path');
-const cors = require("cors");
 const bodyParser = require("body-parser");
 
 const PORT = 7777;
@@ -9,18 +9,26 @@ const PORT = 7777;
 const app = express();
 
 // Middleware - IMPORTANT: Add these before your routes
+// app.use(cors({
+//   origin: [
+//     "http://localhost:3000",
+//     "https://deft-jelly-27c5b3.netlify.app/"
+//   ],
+//   credentials: true
+// }));
+
+const cors = require('cors');
 app.use(cors({
-  origin: [
-    // "http://localhost:3000",
-    "https://deft-jelly-27c5b3.netlify.app/"
-  ],
-  credentials: true
+  origin: 'https://deft-jelly-27c5b3.netlify.app',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 
 app.use(bodyParser.json());
 
+// mongoURI = "mongodb+srv://tarapreetish:abcd1234@cluster0.qynqj8e.mongodb.net/jay_db?appName=Cluster0";
 
-const mongoURI = process.env.MONGODB_URI;
+// const mongoURI = process.env.MONGODB_URI;
 
 
 mongoose.connect(mongoURI)
