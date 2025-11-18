@@ -11,8 +11,8 @@ const app = express();
 // Middleware - IMPORTANT: Add these before your routes
 app.use(cors({
   origin: [
-    "http://localhost:3000",
-    // "https://your-frontend-domain.vercel.app"
+    // "http://localhost:3000",
+    "https://deft-jelly-27c5b3.netlify.app/"
   ],
   credentials: true
 }));
