@@ -46,6 +46,16 @@ app.post("/api/contacts", async (req, res) => {
   }
 });
 
+app.get("/api/contacts", async (req, res) => {
+  try {
+    const contacts = await Contact.find();
+    res.status(200).json(contacts);
+  } catch (error) {
+    console.error("Error fetching contacts:", error);
+    res.status(500).json({ error: "Failed to get contacts" });
+  }
+});
+
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 
